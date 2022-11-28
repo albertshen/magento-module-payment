@@ -11,7 +11,7 @@
     },
     "require": {
         "php": "~7.3.0||~7.4.0||~8.0",
-        "albertshen/magento-module-webapi": "dev-master"
+        "albertshen/magento-module-webapi": "1.0.*"
     },
     "authors": [{
         "name": "Albert Shen",

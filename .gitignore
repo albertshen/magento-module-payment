@@ -1,1 +1,11 @@
+.phpintel/
 .DS_Store
+.git
+*.tmp
+*.lock
+*.log
+*.sass-cache
+*.sql
+*.dump
+*.csv
+*.xlsx

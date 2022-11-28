@@ -5,13 +5,12 @@
 namespace AlbertMage\Payment\Model;
 
 use Magento\Sales\Model\Order;
-use Magento\Framework\Event\ManagerInterface;
-use Magento\Framework\Message\ManagerInterface,
+use Magento\Sales\Model\Order\Payment\Transaction;
 
 /**
  * @author Albert Shen <albertshen1206@gmail.com>
  */
-class PaymentCapture implements \AlbertMage\Payment\Model\Api\PaymentCaptureInterface
+class PaymentCapture implements \AlbertMage\Payment\Api\PaymentCaptureInterface
 {
     /**
      * Application Event Dispatcher
@@ -53,8 +52,8 @@ class PaymentCapture implements \AlbertMage\Payment\Model\Api\PaymentCaptureInte
      * @param \Magento\Framework\Message\ManagerInterface $messageManager
      */
     public function __construct(
-        ManagerInterface $eventManager,
-        ManagerInterface $messageManager,
+        \Magento\Framework\Event\ManagerInterface $eventManager,
+        \Magento\Framework\Message\ManagerInterface $messageManager,
     )
     {
         $this->eventManager = $eventManager;
@@ -156,9 +155,9 @@ class PaymentCapture implements \AlbertMage\Payment\Model\Api\PaymentCaptureInte
 
     public function capture()
     {
-        $this->addTransactionToOrder()
+        $this->addTransactionToOrder();
 
-        $this->generateInvoice()
+        $this->generateInvoice();
 
         $this->getOrder()->addStatusHistoryComment('Automatically INVOICED')->setIsCustomerNotified(true);
 

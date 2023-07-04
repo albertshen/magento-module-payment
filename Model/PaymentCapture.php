@@ -161,6 +161,8 @@ class PaymentCapture implements \AlbertMage\Payment\Api\PaymentCaptureInterface
 
         $this->getOrder()->addStatusHistoryComment('Automatically INVOICED')->setIsCustomerNotified(true);
 
+        //$this->getOrder()->setState(Order::STATE_PAYMENT_REVIEW)->setStatus(Order::STATE_PAYMENT_REVIEW);
+
         $this->getOrder()->save();
 
         $this->eventManager->dispatch('sales_order_payment_catpure', ['order' => $this->getOrder()]);
